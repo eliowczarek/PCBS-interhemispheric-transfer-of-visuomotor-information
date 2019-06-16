@@ -92,26 +92,26 @@ You can call the function "fcanvas" to put some instruction on one screen betwee
 Then we have the instructions
 
     def instructions():
-    #Instructions
-    fcanvas(["In this task you'll have to look at a fixation cross during 1 second",
-            "After 1 second a dot will appear on the right or on the left",
-            "Your task will be to keep fixating the fixation cross and answer right or left with the key <- and -> as fast as possible",
-            "Next screen is an example of a fixation cross"])
-            
+        #Instructions
+        fcanvas(["In this task you'll have to look at a fixation cross during 1 second",
+                "After 1 second a dot will appear on the right or on the left",
+                "Your task will be to keep fixating the fixation cross and answer right or left with the key <- and -> as fast as possible",
+                "Next screen is an example of a fixation cross"])
+
 Here are examples of fixation cross and stimuli, they stay 2 seconds on the screen
             
-    #Example of a fixation cross
-    stim    = expyriment.stimuli.FixCross(size=(60,60))
-    stim.present()
-    exp.clock.wait(2000)
-    #Example of a right dot stimulation
-    fcanvas(["Next screen is an example of a right dot stimulation"])
-    stimulationRight()
-    exp.clock.wait(2000)
-    #Example of a left dot stimulation
-    fcanvas(["Next screen is an example of a left dot stimulation"])
-    stimulationLeft()
-    exp.clock.wait(2000)
+        #Example of a fixation cross
+        stim    = expyriment.stimuli.FixCross(size=(60,60))
+        stim.present()
+        exp.clock.wait(2000)
+        #Example of a right dot stimulation
+        fcanvas(["Next screen is an example of a right dot stimulation"])
+        stimulationRight()
+        exp.clock.wait(2000)
+        #Example of a left dot stimulation
+        fcanvas(["Next screen is an example of a left dot stimulation"])
+        stimulationLeft()
+        exp.clock.wait(2000)
 
 ### Setting and end of the experiment
 
