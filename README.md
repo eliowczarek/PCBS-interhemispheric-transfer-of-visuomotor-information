@@ -154,6 +154,9 @@ This is the function you have to call in order to have a training for the partic
                     "This is the end of the training block",
                     "Are you ready to begin?"])
 
+
+ ### Main Experiment
+ 
 The function experiment run the number of blocks and the number of trial previously hardcoded
 
     def experiment():
@@ -188,7 +191,19 @@ The function experiment run the number of blocks and the number of trial previou
         fcanvas(["Congrats!","You finished the experiment"])
         f.close()
 
+Then you can call each function separately, that allow you to sequanciate the code and easier localize potentials problems
 
+    def mainExperiment():
+        settings()
+        instructions()
+        training()
+        experiment()
+        close()
+
+    if __name__ == "__main__":
+        mainExperiment()
+
+## Analysis
 
 
 
