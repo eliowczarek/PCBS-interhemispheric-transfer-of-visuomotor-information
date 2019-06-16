@@ -23,6 +23,7 @@ Before each block there is some instructions, indicating which hand the particip
       - [Mean and standard deviation](#mean-and-standard-deviasion)
       - [Execusion](#execusion)
     - [CONCLUSION](#conclusion)
+    - [Experience and Class Review](#experience-and-class-review)
 
 <!-- markdown-toc end -->
 
@@ -205,7 +206,7 @@ Then you can call each function separately, that allow you to sequanciate the co
 
 ## Analysis
 
-### Data reorganisatio
+### Data reorganisation
 I reimport os and numpy because I wrote my code for the analyse and the experiment separatelly
 os and numpy are the only thing you have to import to run the analysis
 
@@ -283,9 +284,17 @@ Execusion of the analysis after their reorganisation
 
 ## Conclusion
 
+To conclude, I wrote here the script of the experiment part by part in order to simplify it's correction, modification and reading.
+Data are orginised and there is a biggining of analysis with the mean and the standard deviation.
+There are additional things that should be done to improve this experiment and that would have been interesting to code. For instance, it would have been interesting to adapt the code for an EEG study and of course to go deeper in the analysis
 
 
+## Experience and Class Review
 
+Before this class I had a negligable amount of knowledge in python. I leanrned how to code during an internship by adapting an old Matlab code from one task task to an other. So I firstly learn by myself, on a code that wasn't mine, and without any experience, that is why I chose this PCBS in M1.
+I chose to code in python because I think it is a way better to encode task in python. Moreover, this project allow me to create something on my own, with my own rules and exigence (contrary to my previous experience where all my desisions were constrain by the design of the script that wasn't mine).
+
+I didn't wrote a very long code because I prefered to focus on how to wrote a "clean" code, and avoide to the person after me the experience I had last summer.
 
 
 
