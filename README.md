@@ -63,7 +63,7 @@ We firstly import what we need to run our script (basic python importation), be 
         stim2   = expyriment.stimuli.Circle(40, position=(500,0))
         stim2.plot(canvas)
         canvas.present()
-def stimulationLeft():
+    def stimulationLeft():
         canvas  = expyriment.stimuli.Canvas(size=(1500,1500))
         stim1   = expyriment.stimuli.FixCross(size=(60,60))
         stim1.plot(canvas)
