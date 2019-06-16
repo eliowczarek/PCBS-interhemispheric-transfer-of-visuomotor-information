@@ -98,7 +98,7 @@ Then we have the instructions
             "Your task will be to keep fixating the fixation cross and answer right or left with the key <- and -> as fast as possible",
             "Next screen is an example of a fixation cross"])
             
-Here are example of fixation cross and stimuli, they stay 2 seconds on the screen
+Here are examples of fixation cross and stimuli, they stay 2 seconds on the screen
             
     #Example of a fixation cross
     stim    = expyriment.stimuli.FixCross(size=(60,60))
@@ -112,6 +112,90 @@ Here are example of fixation cross and stimuli, they stay 2 seconds on the scree
     fcanvas(["Next screen is an example of a left dot stimulation"])
     stimulationLeft()
     exp.clock.wait(2000)
+
+### Setting and end of the experiment
+
+Here is two function you have to call respectively at the beginning and at the end of the experiment if you want your experiment to work
+
+    def settings():
+        expyriment.io.defaults.outputfile_time_stamp = False
+        #To have the variable names of what is logged in there
+        expyriment.control.start()
+        #To have the variable names of what is logged in there
+        exp.data_variable_names = ["Block", "Trial", "Key", "RT"]
+
+    def close():
+        expyriment.control.end()
+
+### Training
+
+This is the function you have to call in order to have a training for the participant, it is unsave and totally optional
+
+    def training():
+        for BlockTraining in range(1, NumberOfBlockTraining+1):
+            block = expyriment.design.Block(name = 1) #FirstBlock
+            trial = expyriment.design.Trial()
+            OrderOfTheTrials = random.sample(range(1,11), 10); #pic a random number between 1 and 10 allow to randomize the side of the stimulus across trials
+            fcanvas(["The experiment will begin with a training block"])
+            TextReady = expyriment.stimuli.TextLine(text="Ready ?")
+            TextReady.present()
+            exp.clock.wait(1000)
+            for FirstTrialTraining in range(1,NumberOfTrialTraining+1) :
+                FixationCross()
+                exp.clock.wait(1000)
+                if OrderOfTheTrials[FirstTrialTraining-1] > 5:
+                    stimulationRight()
+                    key, rt = exp.keyboard.wait([expyriment.misc.constants.K_LEFT, expyriment.misc.constants.K_RIGHT])
+                else:
+                    stimulationLeft()
+                    key, rt = exp.keyboard.wait([expyriment.misc.constants.K_LEFT, expyriment.misc.constants.K_RIGHT])
+                FirstTrialTraining += 1;
+            fcanvas(["Congratulation !",
+                    "This is the end of the training block",
+                    "Are you ready to begin?"])
+
+The function experiment run the number of blocks and the number of trial previously hardcoded
+
+    def experiment():
+        TextReady = expyriment.stimuli.TextLine(text="Ready ?")
+        TextReady.present()
+        exp.clock.wait(1000)
+        f = open("data/" + exp.data.filename[0:-4] + "_OrderOfTheTrials.txt","w+")
+        #There is 4 Blocks For each condition, 4 differents instructions for the differents conditions
+        for Block in range(1, NumberOfBlock+1):
+            eye = "left" if Block % 2 == 0 else "right"
+            hand = "left" if (Block % 4 == 0 or Block % 4 == 1) else "right"
+            fcanvas(["Please close the " + eye + " eye and answer with the " + hand + " hand during this block"])
+            f.write("eye " + eye + " hand " + hand + "\n")
+            block = expyriment.design.Block(name = Block)
+            trial = expyriment.design.Trial()
+            OrderOfTheTrials = random.sample(range(1,NumberOfTrial+1), NumberOfTrial);
+            for FirstTrial in range(1,NumberOfTrial+1) :
+                FixationCross()
+                exp.clock.wait(1000)
+                if OrderOfTheTrials[FirstTrial-1] >= NumberOfTrial/2:
+                    stimulationRight()
+                    key, rt = exp.keyboard.wait([expyriment.misc.constants.K_LEFT, expyriment.misc.constants.K_RIGHT])
+                    exp.data.add([block.name, trial.id, key, rt])
+                    f.write("right" + "\n")
+                else:
+                    stimulationLeft()
+                    key, rt = exp.keyboard.wait([expyriment.misc.constants.K_LEFT, expyriment.misc.constants.K_RIGHT])
+                    exp.data.add([block.name, trial.id, key, rt])
+                    f.write("left" + "\n")
+                FirstTrial += 1;
+            fcanvas(["End of the block " + str(Block)])
+        fcanvas(["Congrats!","You finished the experiment"])
+        f.close()
+
+
+
+
+
+
+
+
+
 
 
 
