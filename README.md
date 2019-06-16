@@ -192,7 +192,7 @@ The function experiment run the number of blocks and the number of trial previou
         fcanvas(["Congrats!","You finished the experiment"])
         f.close()
 
-Then you can call each function separately, that allow you to sequanciate the code and easier localize potentials problems
+Then you can call each function separately, that allow you to sequanciate the code and easier localize potential problems
 
     def mainExperiment():
         settings()
