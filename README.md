@@ -26,3 +26,55 @@ Before each block there is some instructions, indicating which hand the particip
 
 <!-- markdown-toc end -->
 
+## Experiment
+
+### Importation and experimental constant
+
+We firstly import what we need to run our script (basic python importation), be sure that we are in the right file, and hardcode the number of blocks and trials for the main experiment and the training.
+
+    import expyriment
+    import expyriment.design.extras
+    import random
+    import os
+
+    os.chdir("/Users/work/Desktop/Projet_AE/")
+    
+    #Hardcoding of the constants of the experiment
+    NumberOfBlock         = 4;
+    NumberOfTrial         = 100;
+    FirstTrial            = 1;
+    NumberOfBlockTraining = 1;
+    NumberOfTrialTraining = 10;
+    FirstTrialTraining    = 1;
+    
+    exp = expyriment.design.Experiment(name="Experiment AE")
+    expyriment.control.initialize(exp)
+
+### Preparation of the stimuli
+    #3 different functions for the 3 different stimuli : Fixation Cross, stimulationRight on the right
+    #and stimulationLeft on the left.
+    def FixationCross():
+        stim    = expyriment.stimuli.FixCross(size=(60,60))
+        stim.present()
+    def stimulationRight():
+        canvas  = expyriment.stimuli.Canvas(size=(1500,1500))
+        stim1   = expyriment.stimuli.FixCross(size=(60,60))
+        stim1.plot(canvas)
+        stim2   = expyriment.stimuli.Circle(40, position=(500,0))
+        stim2.plot(canvas)
+        canvas.present()
+def stimulationLeft():
+        canvas  = expyriment.stimuli.Canvas(size=(1500,1500))
+        stim1   = expyriment.stimuli.FixCross(size=(60,60))
+        stim1.plot(canvas)
+        stim2   = expyriment.stimuli.Circle(40, position=(-500,0))
+        stim2.plot(canvas)
+        canvas.present()
+
+
+
+
+
+
+
+
