@@ -205,8 +205,83 @@ Then you can call each function separately, that allow you to sequanciate the co
 
 ## Analysis
 
+### Data reorganisatio
+I reimport os and numpy because I wrote my code for the analyse and the experiment separatelly
+os and numpy are the only thing you have to import to run the analysis
+
+    import os
+    import numpy as np
+    
+    os.chdir("/Users/work/Desktop/Projet_AE/")
+
+Here are the two function reorganizing obtained data
+
+    def analyse(resultsFilepath, instructionsFilepath):
+        try:
+            with open(resultsFilepath) as resultsFp:
+                with open(instructionsFilepath) as instructionsFp:
+                    readingResults = False
+                    organizedResults = []
+                    for _, result in enumerate(resultsFp):
+                        if (readingResults):
+                            instruction = instructionsFp.readline().rstrip()
+                            result = result.rstrip().split(',')
+                            if (instruction.startswith("eye")): #new block
+                                organizedResults.append([instruction, ["left"], ["right"]])
+                                instruction = instructionsFp.readline().rstrip()
+
+                            #organize result
+                            if (instruction == "left" and result[3] == "276"):#if the stimulus is on the left and the participant pressed the left arrow
+                                organizedResults[-1][1].append(int(result[4]))#last block, list "left": add the reaction time at the end
+                            elif (instruction == "right" and result[3] == "275"):#if the stimulus is on the right and the participant pressed the right arrow
+                                organizedResults[-1][2].append(int(result[4]))#last block, list "right": add the reaction time at the end
+                        elif (result.startswith("subject_id")):
+                            readingResults = True
+                return organizedResults
+        finally:
+            resultsFp.close()
+            instructionsFp.close()
+
+    def sortByIntraOrInterHemisphere(organizedResults):
+        intra = []
+        inter = []
+        for block in organizedResults:
+            if (block[0].split()[3] == "left"):#left hand
+                intra += block[1][1:]#left stimulus (exclude first element saying "left")
+                inter += block[2][1:]#right stimulus (exclude first element saying "right")
+            else:#right hand
+                inter += block[1][1:]#left stimulus (exclude first element saying "left")
+                intra += block[2][1:]#right stimulus (exclude first element saying "right")
+        return inter, intra
+
+### Mean and standard deviation
+
+    def analysedata(data):
+        print(np.mean(data))
+        print(np.std(data, 0))
+
+### Execusion
+
+Execusion of the analysis after their reorganisation
+
+    if __name__ == "__main__":
+        NbParticipants = 2
+        allInter = []
+        allIntra = []
+
+        for i in range(1, NbParticipants+1):
+            numParticipant = "0" + str(i) if i < 10 else str(i)
+            organizedResults = analyse('data/ProjetAE_' + numParticipant + '.xpd', 'data/ProjetAE_' + numParticipant + '_OrderOfTheTrials.txt')
+            inter, intra = sortByIntraOrInterHemisphere(organizedResults)
+            allInter += inter
+            allIntra += intra
+            print(inter)
+            print(intra)
+        analysedata(allInter)
+        analysedata(allIntra)
 
 
+## Conclusion
 
 
 
