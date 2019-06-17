@@ -297,7 +297,7 @@ I chose to code in python because I think it is a way better to encode task in p
 I didn't wrote a very long code because I prefered to focus on how to wrote a "clean" code, and avoide to the person after me the experience I had last summer.
 
 Next steps in my progression will be to learn R and how to wrote a better README.
-I will be glade to have some feedback about this project.
+I will be glade to have some feedback about this project who is my very first personal.
 
 
 
