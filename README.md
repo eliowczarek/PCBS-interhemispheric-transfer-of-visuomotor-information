@@ -29,6 +29,8 @@ Before each block there is some instructions, indicating which hand the particip
 
 ## Experiment
 
+There is absolute pathname at the begin with os.chdir and at the end because it was the easier way for me to save my data in the same file as the one with my script.
+
 ### Importation and experimental constant
 
 We firstly import what we need to run our script (basic python importation), be sure that we are in the right file, and hardcode the number of blocks and trials for the main experiment and the training.
@@ -206,6 +208,8 @@ Then you can call each function separately, that allow you to sequanciate the co
 
 ## Analysis
 
+There is absolute pathname at the begin with os.chdir and at the end because it was the easier for me to analyse data that are in the same file as my script.
+
 ### Data reorganisation
 I reimport os and numpy because I wrote my code for the analyse and the experiment separatelly
 os and numpy are the only thing you have to import to run the analysis
@@ -298,6 +302,10 @@ I didn't wrote a very long code because I prefered to focus on how to wrote a "c
 
 Next steps in my progression will be to learn R and how to wrote a better README.
 I will be glade to have some feedback about this project who is my very first personal.
+
+Thank you
+
+Eliott Owczarek
 
 
 
