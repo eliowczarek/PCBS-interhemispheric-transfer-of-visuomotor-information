@@ -291,11 +291,13 @@ There are additional things that should be done to improve this experiment and t
 
 ## Experience and Class Review
 
-Before this class I had a negligable amount of knowledge in python. I leanrned how to code during an internship by adapting an old Matlab code from one task task to an other. So I firstly learn by myself, on a code that wasn't mine, and without any experience, that is why I chose this PCBS in M1.
-I chose to code in python because I think it is a way better to encode task in python. Moreover, this project allow me to create something on my own, with my own rules and exigence (contrary to my previous experience where all my desisions were constrain by the design of the script that wasn't mine).
+Before this class I had a negligable amount of knowledge in python. I leanrned how to code during an internship by adapting an old Matlab code from one task task to an other. So I firstly learn by myself, on a code that wasn't mine, and without any experience, that is why I chose PCBS in M1.
+I chose to code in python because I think it is a way better to encode task in python rather than matlab. Moreover, this project allow me to create something on my own, with my own rules and exigence (contrary to my previous experience where all my desisions were constrain by the design of the script that wasn't mine).
 
 I didn't wrote a very long code because I prefered to focus on how to wrote a "clean" code, and avoide to the person after me the experience I had last summer.
 
+Next steps in my progression will be to learn R and how to wrote a better README.
+I will be glade to have some feedback about this project.
 
 
 
