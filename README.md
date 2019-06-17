@@ -75,7 +75,7 @@ There is 3 different functions for the 3 different stimuli : Fixation Cross, sti
 
 ### Instructions
 
-You can call the function "fcanvas" to put some instruction on one screen between or during a trial
+You can call the function "fcanvas" whenever you want to put some instruction on one screen between or during a trial
 
     def fcanvas(contents):
         spacing = 100
@@ -90,7 +90,7 @@ You can call the function "fcanvas" to put some instruction on one screen betwee
         canvas.present()
         _, _ = exp.keyboard.wait([expyriment.misc.constants.K_SPACE])
 
-Then we have the instructions
+Then we have the instructions for the begin of the experiment
 
     def instructions():
         #Instructions
